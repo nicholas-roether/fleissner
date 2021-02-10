@@ -14,7 +14,7 @@ export interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({tab}) => (
 	<Container maxWidth="lg" component="main">
-		<Box marginY={2}>
+		<Box mt={2}>
 			{/* Perhaps keep closed tabs rendered? */}
 			{pages[tab]}
 		</Box>
