@@ -1,4 +1,4 @@
-import { Container } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import React from "react";
 import VisualizationPage from "../pages/visualization/visualization";
 import ImplementationPage from "../pages/implementation/implementation";
@@ -14,8 +14,10 @@ export interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({tab}) => (
 	<Container maxWidth="lg" component="main">
-		{/* Perhaps keep closed tabs rendered? */}
-		{pages[tab]}
+		<Box marginY={2}>
+			{/* Perhaps keep closed tabs rendered? */}
+			{pages[tab]}
+		</Box>
 	</Container>
 );
 
