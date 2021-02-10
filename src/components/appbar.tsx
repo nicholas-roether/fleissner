@@ -21,8 +21,12 @@ const MyAppBar: React.FC<MyAppBarProps> = ({tab, onTabChange}) => {
 	return (
 	<AppBar position="static">
         <Toolbar>
-        <Typography variant="h5">Fleißnersche Schablone</Typography>
-        <Box mr={4}/>
+			<a href={process.env.PUBLIC_URL}>
+				<img src="icon-192.png" alt="" height="32"/>
+			</a>
+			<Box mr={2}/>
+			<Typography variant="h5">Fleißnersche Schablone</Typography>
+			<Box mr={4}/>
 			<Tabs
 				value={tab}
 				onChange={(_, value) => onTabChange && onTabChange(value)}
