@@ -10,7 +10,7 @@ const VisualizationPage: React.FC = () => {
 	const [showGrille, setShowGrille] = React.useState<boolean>(false);
 	return (
 		<Box display="flex" flexDirection="column" alignItems="center">
-			<Box width="600px" mb={2}>
+			<Box maxWidth="600px" width="100%" mb={2}>
 				<FleissnerGrilleWidget message={defaultMessage} rotation={rotation} showGrille={showGrille} />
 			</Box>
 			<span>
