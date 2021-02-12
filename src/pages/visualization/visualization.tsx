@@ -1,32 +1,17 @@
-import { makeStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import React from "react";
-import { fleissnerEncode } from "../../utils/fleissner-utils";
-import { FleissnerGrille } from "./grille";
-import LetterGrid from "./letter-grid";
+import FleissnerGrilleWidget from "./fleissner-grille-widget";
 
-const useStyles = makeStyles({
-	container: {
-		position: "relative",
-		maxWidth: "600px"
-	},
-	content: {
-		position: "absolute",
-		width: "100%",
-	}
-});
 
 const defaultMessage = "Moin, dies ist die Fleißnersche Schablone"
 
 const VisualizationPage: React.FC = () => {
-	const classes = useStyles();
-	const messageSanitized = defaultMessage.toUpperCase().split("").filter(char => /[A-Z]/.test(char)).join("");
-	console.log(messageSanitized);
-	const gridLetters = fleissnerEncode(messageSanitized);
+	const [rotation, setRotation] = React.useState<number>(0);
 	return (
-		<div className={classes.container}>
-			<div className={classes.content}><LetterGrid size={6} letters={gridLetters} fontSize="7em" /></div>
-			<div className={classes.content}><FleissnerGrille /></div>
-		</div>
+		<>
+			<FleissnerGrilleWidget message={defaultMessage} rotation={rotation} />
+			<Button variant="contained" onClick={() => setRotation(rotation + 1)}>Rotate</Button>
+		</>
 	);
 };
 
