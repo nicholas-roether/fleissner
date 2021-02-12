@@ -38,7 +38,7 @@ function fleissnerGrilleRotated(rotations: number): number[] {
 	let grille = fleissnerGrille;
 	for(rotations = rotations % 4; rotations > 0; rotations--)
 		grille = rotateSquareIndecies(grille, 6);
-	return grille;
+	return grille.sort((a, b) => a - b);
 }
 
 /**
@@ -60,16 +60,19 @@ function fleissnerDecode(letters: string[], separator: string = ""): string {
 	return result.join(separator);
 }
 
-function fleissnerEncode(text: string) {
+function fleissnerEncode(text: string): string[] {
 	let result: string[] = [];
 	for(let part = 0; part < 4; part++) {
 		const grille = fleissnerGrilleRotated(part);
 		const offset = 9 * part;
 		const chars = text.substr(offset, 9).split("");
+		console.log("chars: ", chars);
 		chars.forEach((char, i) => {
 			result[grille[i]] = char;
+			console.log(grille[i], char, result)
 		});
 	}
+	return result;
 }
 
 export {
