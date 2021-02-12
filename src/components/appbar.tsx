@@ -1,6 +1,8 @@
 import { AppBar, Box, makeStyles, Tab, Tabs, TabsProps, Toolbar, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 
+import icon from "../res/icon.png";
+
 const useStyles = makeStyles((theme) => ({
 	tabs: {
 		...theme.mixins.toolbar,
@@ -32,7 +34,7 @@ const Heading: React.FC = () => {
 	return (
 		<span className={classes.heading}>
 			<a href={process.env.PUBLIC_URL}>
-				<img src="icon-192.png" alt="" height="32"/>
+				<img src={icon} alt="" height="32"/>
 			</a>
 			<Box mr={2}/>
 			<Typography variant={smallTitle ? "h6" : "h5"}>Fleißnersche Schablone</Typography>
