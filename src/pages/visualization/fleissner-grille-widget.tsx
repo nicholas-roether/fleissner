@@ -1,4 +1,4 @@
-import { Box, Card, Fade, makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, Card, makeStyles, Slide, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { Transition } from "react-transition-group";
 import { fleissnerEncode } from "../../utils/fleissner-utils";
@@ -61,20 +61,22 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 				<LetterGrid size={6} letters={gridLetters} fontSize={smallLetters ? "2em" : "6em"} />
 			</div>
 			<div className={classes.overlay}>
-				<Fade in={showGrille}>
-					<Transition in={true} appear={true} timeout={20} key={rotation}>
-						{(state) => {
-							return (
-								<div 
-									style={{transform: `rotate(${(state !== "entered" ? prevRotation : rotation) * 0.25}turn`}}
-									className={classes.rotationAnim}
-								>
-									<FleissnerGrille />
-								</div>
-							);
-						}}
-					</Transition>
-				</Fade>
+				<Slide in={showGrille} direction="down">
+					<div>
+						<Transition in={true} appear={true} timeout={20} key={rotation}>
+							{(state) => {
+								return (
+									<div 
+										style={{transform: `rotate(${(state !== "entered" ? prevRotation : rotation) * 0.25}turn`}}
+										className={classes.rotationAnim}
+									>
+										<FleissnerGrille />
+									</div>
+								);
+							}}
+						</Transition>
+					</div>
+				</Slide>
 			</div>
 		</div>
 	);
