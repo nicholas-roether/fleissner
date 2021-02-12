@@ -66,10 +66,8 @@ function fleissnerEncode(text: string): string[] {
 		const grille = fleissnerGrilleRotated(part);
 		const offset = 9 * part;
 		const chars = text.substr(offset, 9).split("");
-		console.log("chars: ", chars);
 		chars.forEach((char, i) => {
 			result[grille[i]] = char;
-			console.log(grille[i], char, result)
 		});
 	}
 	return result;
