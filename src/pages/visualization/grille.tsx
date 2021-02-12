@@ -36,7 +36,7 @@ const Grille: React.FC<GrilleProps> = ({size, cutouts}) => {
 				<defs>
 					<mask id="cutout-mask">
 						<rect x="0" y="0" width="100" height="100" fill="#fff" />
-						{cutouts.map(index => {
+						{cutouts.map((index, key) => {
 							const tileSize = 100 / size;
 							return (
 								<rect
@@ -47,6 +47,7 @@ const Grille: React.FC<GrilleProps> = ({size, cutouts}) => {
 									rx="2"
 									ry="2"
 									fill="#000"
+									key={key}
 								/>
 							)
 						})}

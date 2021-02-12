@@ -48,7 +48,7 @@ export interface LetterGridProps {
 
 const LetterGrid: React.FC<LetterGridProps> = ({size, letters, fontSize = "3em"}) => {
 	const classes = useStyles();
-	while(letters.length < size**2) letters.push(" ");
+	while(letters.length < size**2) letters.push("");
 	while(letters.length > size**2) letters.pop();
 	return (
 		<div className={classes.gridContainer}>
@@ -59,7 +59,7 @@ const LetterGrid: React.FC<LetterGridProps> = ({size, letters, fontSize = "3em"}
 			}
 			}>
 				{letters.map((letter, i) => (
-					<LetterSquare letter={letter[0].toUpperCase()} />
+					<LetterSquare letter={letter[0].toUpperCase()} key={i} />
 				))}
 			</div>
 		</div>
