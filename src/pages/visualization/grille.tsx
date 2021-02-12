@@ -11,6 +11,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	grille: {
 		position: "absolute",
+		top: 0,
+		left: 0,
 		boxSizing: "content-box",
 		width: "100%",
 		height: "100%",
@@ -62,6 +64,8 @@ const Grille: React.FC<GrilleProps> = ({size, cutouts}) => {
 					mask="url(#cutout-mask)" 
 					style={{fill: theme.palette.primary.main, opacity: 0.93}} 
 				/>
+
+				<path d="M48 0 L50 2.5 L52 0 Z"/>
 			</svg>
 		</div>
 	);
