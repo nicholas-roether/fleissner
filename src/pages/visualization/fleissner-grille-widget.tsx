@@ -1,6 +1,6 @@
 import { Box, Card, makeStyles, Slide, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
-import { Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { fleissnerEncode } from "../../utils/fleissner-utils";
 import { usePreviousValue } from "../../utils/hooks";
 import { FleissnerGrille } from "./grille";
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	content: {
 		width: "100%",
+		height: "100%"
 	},
 	overlay: {
 		width: "100%",
@@ -51,8 +52,8 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 	const classes = useStyles();
 	const theme = useTheme();
 	const smallLetters = useMediaQuery(theme.breakpoints.down("xs"));
-	const prevRotation = usePreviousValue(rotation) || 0;
-	console.log(prevRotation);
+	const [animate, setAnimate] = React.useState<boolean>(true);
+	let prevRotation = usePreviousValue(rotation) || 0;
 	
 	const gridLetters = encodeMessage(message);
 	return (
@@ -63,18 +64,21 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 			<div className={classes.overlay}>
 				<Slide in={showGrille} direction="down">
 					<div>
-						<Transition in={true} appear={true} timeout={20} key={rotation}>
+						<CSSTransition in={true} appear={animate} timeout={20} key={`${rotation};${prevRotation}`}>
 							{(state) => {
+								// Stupid fix for iOS animation problems
+								if(state === "entering") setTimeout(() => setAnimate(false), 220);
+								if(state === "entered") setAnimate(true);
 								return (
 									<div 
-										style={{transform: `rotate(${(state !== "entered" ? prevRotation : rotation) * 0.25}turn`}}
+										style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
 										className={classes.rotationAnim}
 									>
 										<FleissnerGrille />
 									</div>
 								);
 							}}
-						</Transition>
+						</CSSTransition>
 					</div>
 				</Slide>
 			</div>
