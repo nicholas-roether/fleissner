@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/fleissner/static/js/main.8deb483f.chunk.js",
-    "main.js.map": "/fleissner/static/js/main.8deb483f.chunk.js.map",
+    "main.js": "/fleissner/static/js/main.ffa804f1.chunk.js",
+    "main.js.map": "/fleissner/static/js/main.ffa804f1.chunk.js.map",
     "runtime-main.js": "/fleissner/static/js/runtime-main.038f4f47.js",
     "runtime-main.js.map": "/fleissner/static/js/runtime-main.038f4f47.js.map",
-    "static/js/2.736b8fa0.chunk.js": "/fleissner/static/js/2.736b8fa0.chunk.js",
-    "static/js/2.736b8fa0.chunk.js.map": "/fleissner/static/js/2.736b8fa0.chunk.js.map",
+    "static/js/2.ba01fda9.chunk.js": "/fleissner/static/js/2.ba01fda9.chunk.js",
+    "static/js/2.ba01fda9.chunk.js.map": "/fleissner/static/js/2.ba01fda9.chunk.js.map",
     "index.html": "/fleissner/index.html",
-    "static/js/2.736b8fa0.chunk.js.LICENSE.txt": "/fleissner/static/js/2.736b8fa0.chunk.js.LICENSE.txt"
+    "static/js/2.ba01fda9.chunk.js.LICENSE.txt": "/fleissner/static/js/2.ba01fda9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.038f4f47.js",
-    "static/js/2.736b8fa0.chunk.js",
-    "static/js/main.8deb483f.chunk.js"
+    "static/js/2.ba01fda9.chunk.js",
+    "static/js/main.ffa804f1.chunk.js"
   ]
 }
