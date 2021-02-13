@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	content: {
 		width: "100%",
-		height: "100%"
+		height: "100%",
+		position: "relative"
 	},
 	overlay: {
 		width: "100%",
@@ -31,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	cardContentContainer: {
 		margin: "auto",
-		// display: "inline-block",
 		maxWidth: "600px",
 		textAlign: "center"
 	},
@@ -52,9 +52,13 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 	const classes = useStyles();
 	const theme = useTheme();
 	const smallLetters = useMediaQuery(theme.breakpoints.down("xs"));
-	const [animate, setAnimate] = React.useState<boolean>(true);
-	let prevRotation = usePreviousValue(rotation) || 0;
-	
+
+	const setState = React.useState<null>()[1];
+	const rebuild = () => setState(null);
+
+	const rebuildTimeoutRef = React.useRef<NodeJS.Timeout>();
+
+	const prevRotation = usePreviousValue(rotation) || 0;
 	const gridLetters = encodeMessage(message);
 	return (
 		<div className={classes.container}>
@@ -64,11 +68,13 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 			<div className={classes.overlay}>
 				<Slide in={showGrille} direction="down">
 					<div>
-						<CSSTransition in={true} appear={animate} timeout={20} key={`${rotation};${prevRotation}`}>
+						<CSSTransition in={true} appear={prevRotation !== rotation} timeout={20} key={`${rotation};${prevRotation}`}>
 							{(state) => {
 								// Stupid fix for iOS animation problems
-								if(state === "entering") setTimeout(() => setAnimate(false), 220);
-								if(state === "entered") setAnimate(true);
+								if(state === "entering") {
+									if(rebuildTimeoutRef.current) clearTimeout(rebuildTimeoutRef.current)
+									rebuildTimeoutRef.current = setTimeout(() => rebuild(), 220);
+								}
 								return (
 									<div 
 										style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
