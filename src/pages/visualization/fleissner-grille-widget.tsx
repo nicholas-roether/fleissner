@@ -67,25 +67,23 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 			</div>
 			<div className={classes.overlay}>
 				<Slide in={showGrille} direction="down">
-					<div>
-						<CSSTransition in={true} appear={prevRotation !== rotation} timeout={20} key={`${rotation};${prevRotation}`}>
-							{(state) => {
-								// Stupid fix for iOS animation problems
-								if(state === "entering") {
-									if(rebuildTimeoutRef.current) clearTimeout(rebuildTimeoutRef.current)
-									rebuildTimeoutRef.current = setTimeout(() => rebuild(), 220);
-								}
-								return (
-									<div 
-										style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
-										className={classes.rotationAnim}
-									>
-										<FleissnerGrille />
-									</div>
-								);
-							}}
-						</CSSTransition>
-					</div>
+					<CSSTransition in={true} appear={prevRotation !== rotation} timeout={20} key={`${rotation};${prevRotation}`}>
+						{(state) => {
+							// Stupid fix for iOS animation problems
+							if(state === "entering") {
+								if(rebuildTimeoutRef.current) clearTimeout(rebuildTimeoutRef.current)
+								rebuildTimeoutRef.current = setTimeout(() => rebuild(), 220);
+							}
+							return (
+								<div 
+									style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
+									className={classes.rotationAnim}
+								>
+									<FleissnerGrille />
+								</div>
+							);
+						}}
+					</CSSTransition>
 				</Slide>
 			</div>
 		</div>
