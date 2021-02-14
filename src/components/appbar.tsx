@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const Heading: React.FC = () => {
+const Heading = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const smallTitle = useMediaQuery(theme.breakpoints.down("xs"));
@@ -46,7 +46,7 @@ interface TabBarProps extends Omit<TabsProps, "onChange"> {
 	onChange?: (value: number) => void
 }
 
-const TabBar: React.FC<TabBarProps> = ({onChange, ...other}) => (
+const TabBar = ({onChange, ...other}: TabBarProps) => (
 	<Tabs onChange={(_, value) => onChange && onChange(value)} {...other}>
 		<Tab label="Veranschaulichung"/>
 		<Tab label="Implementierung"/>
@@ -59,7 +59,7 @@ export interface MyAppBarProps {
 	onTabChange?: (tab: number) => void
 }
 
-const MobileAppBar: React.FC<MyAppBarProps> = ({tab, onTabChange}) => {
+const MobileAppBar = ({tab, onTabChange}: MyAppBarProps) => {
 	const classes = useStyles();
 	return (
 		<AppBar position="sticky" className={classes.mobileAppBar}>
@@ -73,7 +73,7 @@ const MobileAppBar: React.FC<MyAppBarProps> = ({tab, onTabChange}) => {
 	);
 }
 
-const DesktopAppBar: React.FC<MyAppBarProps> = ({tab, onTabChange}) => {
+const DesktopAppBar = ({tab, onTabChange}: MyAppBarProps) => {
 	const classes = useStyles();
 	return (
 		<AppBar position="sticky">
@@ -93,7 +93,7 @@ const DesktopAppBar: React.FC<MyAppBarProps> = ({tab, onTabChange}) => {
 	);
 }
 
-const MyAppBar: React.FC<MyAppBarProps> = (props) => {
+const MyAppBar = (props: MyAppBarProps) => {
 	const theme = useTheme();
 	const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return mobile ? <MobileAppBar {...props} /> : <DesktopAppBar {...props} />

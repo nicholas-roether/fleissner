@@ -12,7 +12,7 @@ export interface ContentProps {
 	tab: number
 }
 
-const Content: React.FC<ContentProps> = ({tab}) => (
+const Content = ({tab}: ContentProps) => (
 	<Container maxWidth="lg" component="main">
 		<Box mt={2}>
 			{/* Perhaps keep closed tabs rendered? */}

@@ -48,7 +48,7 @@ export interface FleissnerGrilleWidgetProps {
 	rotation?: number;
 }
 
-const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = false, rotation = 0}) => {
+const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidgetProps) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const smallLetters = useMediaQuery(theme.breakpoints.down("xs"));
@@ -92,7 +92,7 @@ const Widget: React.FC<FleissnerGrilleWidgetProps> = ({message, showGrille = fal
 	);
 }
 
-const FleissnerGrilleWidget: React.FC<FleissnerGrilleWidgetProps> = (props) => {
+const FleissnerGrilleWidget = (props: FleissnerGrilleWidgetProps) => {
 	const classes = useStyles();
 	return (
 		<Card className={classes.card}>

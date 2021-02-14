@@ -29,7 +29,7 @@ export interface GrilleProps {
 	cutouts: number[]
 }
 
-const Grille: React.FC<GrilleProps> = ({size, cutouts}) => {
+const Grille = ({size, cutouts}: GrilleProps) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	return (
@@ -71,7 +71,7 @@ const Grille: React.FC<GrilleProps> = ({size, cutouts}) => {
 	);
 }
 
-const FleissnerGrille: React.FC = () => (
+const FleissnerGrille = () => (
 	<Grille size={6} cutouts={fleissnerGrille} />
 )
 

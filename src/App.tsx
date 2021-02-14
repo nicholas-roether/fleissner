@@ -3,7 +3,7 @@ import MyAppBar from './components/appbar';
 import Content from './components/content';
 
 
-const App: React.FC = () => {
+const App = () => {
   const [tab, setTab] = React.useState<number>(0);
   return (
     <>

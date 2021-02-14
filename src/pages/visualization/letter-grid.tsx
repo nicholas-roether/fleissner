@@ -35,7 +35,7 @@ interface LetterSquareProps {
 	letter: string;
 }
 
-const LetterSquare: React.FC<LetterSquareProps> = ({letter}) => {
+const LetterSquare = ({letter}: LetterSquareProps) => {
 	const classes = useStyles();
 	return <div className={classes.letterSquare}>{letter}</div>;
 }
@@ -46,7 +46,7 @@ export interface LetterGridProps {
 	fontSize?: string;
 }
 
-const LetterGrid: React.FC<LetterGridProps> = ({size, letters, fontSize = "3em"}) => {
+const LetterGrid = ({size, letters, fontSize = "3em"}: LetterGridProps) => {
 	const classes = useStyles();
 	while(letters.length < size**2) letters.push("");
 	while(letters.length > size**2) letters.pop();

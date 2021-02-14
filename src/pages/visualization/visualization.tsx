@@ -5,7 +5,7 @@ import FleissnerGrilleWidget from "./fleissner-grille-widget";
 
 const defaultMessage = "Moin, dies ist die Fleißnersche Schablone"
 
-const VisualizationPage: React.FC = () => {
+const VisualizationPage = () => {
 	const [rotation, setRotation] = React.useState<number>(0);
 	const [showGrille, setShowGrille] = React.useState<boolean>(false);
 	return (
