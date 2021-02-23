@@ -3,4 +3,4 @@
 Diese Webapp ist begleitend zu einer Präsentation gedacht.
 Sie beinhaltet Informationen über die Fleißnersche Schablone.
 
-Besuchen sie sie (https://nicholas-roether.github.io/fleissner)[hier].
+Besuchen sie sie [hier](https://nicholas-roether.github.io/fleissner).
