@@ -95,17 +95,20 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 const FleissnerGrilleWidget = (props: FleissnerGrilleWidgetProps) => {
 	const classes = useStyles();
 	return (
-		<Card className={classes.card}>
-			<div className={classes.cardContentContainer}>
-				<Box>1</Box>
-				<Box display="flex" alignItems="center">
-					<span>4</span>
-					<Box p={2} width="100%"><Widget {...props} /></Box>
-					<span>2</span>
-				</Box>
-				<Box>3</Box>
-			</div>
-		</Card>
+		<>
+			<Box mt={5} />
+			<Card className={classes.card}>
+				<div className={classes.cardContentContainer}>
+					<Box>1</Box>
+					<Box display="flex" alignItems="center">
+						<span>4</span>
+						<Box p={2} width="100%"><Widget {...props} /></Box>
+						<span>2</span>
+					</Box>
+					<Box>3</Box>
+				</div>
+			</Card>
+		</>
 	)
 }
 
