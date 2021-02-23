@@ -30,16 +30,6 @@ public class Fleissner {
         return indecies.stream().map((Integer i) -> 6 * ((i % 6) + 1) - (i / 6) - 1).sorted().collect(Collectors.toList());
     }
 
-    private static List<Integer> getFleissnerIndecies(int rotations) {
-        List<Integer> result = baseIndecies;
-        rotations = rotations % 4;
-        while(rotations > 0) {
-            result = rotateIndecies(result);
-            rotations--;
-        }
-        return result;
-    }
-
     public static String decode(List<Character> chars) {
         StringBuilder result = new StringBuilder();
         List<Integer> indecies = baseIndecies;
