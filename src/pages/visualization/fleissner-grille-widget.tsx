@@ -53,8 +53,8 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 	const theme = useTheme();
 	const smallLetters = useMediaQuery(theme.breakpoints.down("xs"));
 
-	const setState = React.useState<null>()[1];
-	const rebuild = () => setState(null);
+	const [state, setState] = React.useState(false);
+	const rebuild = () => setState(!state);
 
 	const rebuildTimeoutRef = React.useRef<NodeJS.Timeout>();
 
