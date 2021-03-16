@@ -74,8 +74,7 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 								if(state === "entering") {
 									if(rebuildTimeoutRef.current) clearTimeout(rebuildTimeoutRef.current)
 									rebuildTimeoutRef.current = setTimeout(() => rebuild(), 220);
-								}
-								rebuildTimeoutRef.current = undefined;
+								};
 								return (
 									<div 
 										style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
