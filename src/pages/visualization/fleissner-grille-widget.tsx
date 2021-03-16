@@ -53,7 +53,7 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 	const theme = useTheme();
 	const smallLetters = useMediaQuery(theme.breakpoints.down("xs"));
 
-	const [state, setState] = React.useState(false);
+	const [state, setState] = React.useState<boolean>();
 	const rebuild = () => setState(!state);
 
 	const rebuildTimeoutRef = React.useRef<NodeJS.Timeout>();
@@ -75,6 +75,7 @@ const Widget = ({message, showGrille = false, rotation = 0}: FleissnerGrilleWidg
 									if(rebuildTimeoutRef.current) clearTimeout(rebuildTimeoutRef.current)
 									rebuildTimeoutRef.current = setTimeout(() => rebuild(), 220);
 								}
+								rebuildTimeoutRef.current = undefined;
 								return (
 									<div 
 										style={{transform: `rotate(${(state === "entering" ? prevRotation : rotation) * 90}deg`}}
