@@ -47,7 +47,6 @@ public class Fleissner {
         List<Integer> indecies = baseIndecies;
         for(int i = 0; i < 4; i++) {
             if(i != 0) indecies = rotateIndecies(indecies);
-            System.out.println(indecies);
             for(int j = 0; j < 9; j++) {
                 result.set(indecies.get(j), message.charAt(i * 9 + j));
             }
